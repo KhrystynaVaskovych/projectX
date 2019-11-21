@@ -47,8 +47,6 @@ class TableItemComponent extends Component {
   }
 
   async handleNewNote() {
-
-   
     const myNewNote = () => {
       const _id = ((Math.random() +10) + 1);
       const _title = this.state.newNote;
@@ -84,13 +82,16 @@ class TableItemComponent extends Component {
   setIsShow() {
     const { isShow } = this.state;
     this.setState({
-      isShow: !isShow
+      isShow: !isShow,
+      newNote: ''
+      
     });
   }
 
   renderInputField() {
     return (
       <div className="ui form">
+       <div className="button-close" onClick={this.setIsShow}> <i class="close icon"></i> </div>
         <div className="field">
           <textarea rows="2" placeholder="enter a title for this card"
           value={this.state.newNote} onChange={this.handleInputChange}
@@ -100,12 +101,20 @@ class TableItemComponent extends Component {
           type="button"
           className="ui green button fluid"
           onClick={this.handleNewNote}
+          disabled={this.check}
         >
           Add your new note
          </button>
       </div>
     );
   }
+
+  check() {
+    if(this.state.newNote === ''){
+        return true;
+    }
+    return false;
+  } 
 
   renderButton() {
     return (
@@ -126,7 +135,7 @@ class TableItemComponent extends Component {
           return (
           <li key={id} className="ui card notes-block__note">
             <div className="content">
-            <button type="button" className="ui icon button basic right floated" onClick={() =>this.deleteMyNote(id)}>
+            <button type="button" className="ui icon button basic right floated">
             <i class="close icon"></i>
             </button>
               <div className="header">{title}</div>
@@ -152,5 +161,7 @@ class TableItemComponent extends Component {
     )
   }
 };
+
+
   
 export default TableItemComponent;
