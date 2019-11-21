@@ -5,8 +5,12 @@ import {
   TransitionGroup
 } from 'react-transition-group';
 
-import DefaultLayout from '../components/Header'
-import HomePage from '../pages/HomePage'
+import DefaultLayout from '../components/DefaultLayout';
+import HomePage from '../pages/HomePage';
+import FullVersionComponent from '../pages/FullVersionConponent';
+
+import './Routes.scss';
+
 
 const Routes = () => (
   <Route render={({ location }) => (
@@ -18,14 +22,16 @@ const Routes = () => (
       >
         <Switch>
           <DefaultLayout path="/" exact component={HomePage} />
-          {/* <DefaultLayout
-            to="/not_found"
-            component={}
+          <DefaultLayout path="/home" component={HomePage} />
+
+          <DefaultLayout
+            to="/ v"
+            component={FullVersionComponent}
             hideFooter
             hideHeader
             hideBrands
             hideShippingInfo
-          /> */}
+          />
         </Switch>
       </CSSTransition>
     </TransitionGroup>

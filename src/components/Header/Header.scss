@@ -1,3 +1,38 @@
-.hello {
-  color: red;
+@import '../../scss/global.scss';
+
+.header-custom {
+  position: relative;
+  color: white;
+  background-color: rgb(68, 162, 94);
+
+  .ui.basic.button{
+    color: black;
+  }
+  h1{
+    color: white;
+
+    &:hover {
+      color: lightgrey;
+    }
+  }
+
+  i {
+    color: white;
+  }
+
+    .container {
+      display: flex;
+      justify-content: space-between;
+  }
+  &__block {
+    display: flex;
+    padding: 3px 0;
+
+      &__title {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+  }
 }

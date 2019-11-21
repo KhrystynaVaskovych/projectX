@@ -36,7 +36,11 @@
     "jsx-a11y/label-has-associated-control": "off",
     "no-plusplus": ["error", {"allowForLoopAfterthoughts": true}],
     "react/jsx-props-no-spreading": "off",
-    "linebreak-style": 0
+    "linebreak-style": 0,
+    "import/no-unresolved": [
+      2, 
+      { "caseSensitive": false }
+   ]
   },
   "settings": {
     "import/resolver": {

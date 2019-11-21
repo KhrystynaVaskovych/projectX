@@ -7,7 +7,6 @@ import {
 } from 'react-transition-group';
 
 import Header from '../Header';
-import Footer from '../Footer';
 
 class DefaultLayout extends Component {
   constructor(props) {
@@ -25,7 +24,6 @@ class DefaultLayout extends Component {
   render() {
     const {
       component: Page,
-      hideFooter,
       hideHeader,
       location,
       ...rest
@@ -34,23 +32,20 @@ class DefaultLayout extends Component {
     return (
       <Route
         {...rest}
-        render={(matchProps) => {
-          return (
-            <TransitionGroup>
-              <CSSTransition
-                key={location.key}
-                timeout={300}
-                classNames="fade"
-              >
-                <>
-                  {!hideHeader && <Header />}
-                  {/* <Page {...matchProps} /> */}
-                  {!hideFooter && <Footer />}
-                </>
-              </CSSTransition>
-            </TransitionGroup>
-          );
-        }}
+        render={(matchProps) => (
+          <TransitionGroup>
+            <CSSTransition
+              key={location.key}
+              timeout={300}
+              classNames="fade"
+            >
+              <>
+                {!hideHeader && <Header />}
+                <Page {...matchProps} />
+              </>
+            </CSSTransition>
+          </TransitionGroup>
+        )}
       />
     );
   }

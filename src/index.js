@@ -1,15 +1,19 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
 import Routes from './Routes';
+import store from './store';
 
 function App() {
-  
   return (
-  <BrowserRouter>
-  <Routes />
-  </BrowserRouter>)
+    <BrowserRouter>
+      <Provider store={store}>
+        <Routes />
+      </Provider>
+    </BrowserRouter>
+  );
 }
 
 
